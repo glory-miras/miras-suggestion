@@ -3,13 +3,14 @@ const Beer = require('../models/beer')
 
 class PlayController{
     static getRecommendBeer(req,res){
-        const text = "Shut up"
+        const {text} = req.body
         Sentiment.checkSentiment(text)
         .then(data => {
             data = JSON.parse(data)
-            let {positive , neutral , negative} = data.sentiment
+            console.log(data)
+            // let {positive , neutral , negative} = data.sentiment
             
-            console.log({positive , neutral , negative})
+            // console.log({positive , neutral , negative})
         })
         .catch(err => {
             console.log(err)
