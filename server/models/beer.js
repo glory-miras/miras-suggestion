@@ -40,7 +40,7 @@ class Beer {
     }
 
     static getBeerWithAbv(abv){
-       return axios.get(`https://api.punkapi.com/v2/beers?abv_gt=${abv}`)
+       return axios.get(`https://api.punkapi.com/v2/beers?abv_lt=${abv}`)
     }
 }
 
