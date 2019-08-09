@@ -286,16 +286,19 @@
         <br>
         <input type="submit" value="Submit">
       </form>
-      
+      <br>
+      <p>Your emotion is</p>
+      <div id="emotion"></div>
+      <!-- <p></p> -->
       <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p> -->
     </div>
 
-    <div class="column middle">
+    <div class="column middle" id="list-beers">
       <h2>Best Beer</h2>
       <div class="thread" style="border: 1px solid grey; padding: 0 5px;">
-          <h1 class="title"> <a href = "${data[i].html_url}" target="_blank" > ${data[i].name} </a> </h1>
+          <!-- <h1 class="title"> <a href = "${data[i].html_url}" target="_blank" > ${data[i].name} </a> </h1>
           <p> ${data[i].description || 'No Description'} </p>
-          🌟 ${data[i].stargazers_count}
+          🌟 ${data[i].stargazers_count} -->
       </div>`
       <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
         velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat,
@@ -308,18 +311,18 @@
     </div>
 
     <div class="column side" id="side-right">
-      <div style="border: solid black 1px">
-        <img src="https://images.unsplash.com/photo-1565257669255-b5401f04ce04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"><br>
-        <h2> Title</h2>
-        <p> Tagline : </p>
-        <p> Description : </p>
-        <p> ABV :</p>
-        <p> PH : </p>
-        <p> Brewer Tips : </p>
-        <p> Food Pairing :</p>
-        <p> First Brewed : </p>
-
-      </div>
+        <div style="border: solid black 1px">
+            <img src="https://images.unsplash.com/photo-1565257669255-b5401f04ce04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"><br>
+            <h2> Title</h2>
+            <p> Tagline : </p>
+            <p> Description : </p>
+            <p> ABV :</p>
+            <p> PH : </p>
+            <p> Brewer Tips : </p>
+            <p> Food Pairing :</p>
+            <p> First Brewed : </p>
+    
+          </div>
     </div>
   </div>
   <script src="./main.js"></script>
