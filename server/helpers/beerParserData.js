@@ -9,7 +9,8 @@ function parser(data){
     newObj.abv = data.abv;
     newObj.ph = data.ph;
     newObj.brewers_tips = data.brewers_tips;
-    newObj.image_url = data.image_url
+    newObj.image_url = data.image_url;
+    newObj.food_pairing = data.food_pairing;
     return newObj
 }
 

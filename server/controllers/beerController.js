@@ -3,32 +3,46 @@ const beerParser = require('../helpers/beerParserData')
 
 class BeerController {
     static getAll(req,res){
-        Beer.getAll()
+        if (req.query.id){
+            const { id } = req.query
+            Beer.getById(id)
+            .then(({data}) => {
+                let beers = [];
+                data.forEach(el => { beers.push(beerParser(el))})
+                res.json(beers)
+            })
+            .catch(err => {
+                res.send(err)
+            })
+        } else {
+            return Beer.getAll()
+            .then(({data}) => {
+                let beers = [];
+                data.forEach(el => { beers.push(beerParser(el))})
+                res.json(beers)
+            })
+            .catch(err => {
+                res.send(err)
+            })
+        }
+       
+       
+    }
+
+    static getRandomBeer(req,res){
+        Beer.getRandomBeer()
         .then(({data}) => {
             let beers = [];
             data.forEach(el => { beers.push(beerParser(el))})
             res.json(beers)
         })
         .catch(err => {
-            console.log(err)
+            res.send(err)
         })
     }
 
-    static getById(req,res){
-        const { id } = req.params
-        // const id = 4;
-        Beer.getById(id)
-        .then(({data}) => {
-            let beers = [];
-            data.forEach(el => { beers.push(beerParser(el))})
-            res.json(beers)
-            // console.log(beers)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+
+    
 }
 
 module.exports = BeerController
-// BeerController.getById(3)
