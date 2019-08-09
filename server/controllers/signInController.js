@@ -1,13 +1,14 @@
 const User = require('../models/User')
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.CLIENT_ID);
-const secret = process.env.JWT_SECRET
+const secret = 'TheChainBreaker'
 const jwt = require('jsonwebtoken');
 
 
 class SignInController {
 
     static signIn(req, res, next) {
+        console.log(secret)
         client
             .verifyIdToken({
                 idToken: req.body.idToken,
