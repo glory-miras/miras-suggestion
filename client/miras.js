@@ -5,13 +5,14 @@ $(document).ready(function () {
         event.preventDefault()
 
         let text = $('#userword').val()
-        // let accessToken = localStorage.getItem('accessToken')
+        let accessToken = localStorage.getItem('accessToken')
         // console.log(text)
         $.ajax({
             url: 'http://localhost:3000/beers/recommended',
             method: 'POST',
             data: {
-                text 
+                text,
+                accessToken 
             }
         })
             .done(function (data) {

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>CSS Website Layout</title>
+  <title>Beer recommendation</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -239,9 +239,9 @@
 
 
   <div class="topnav">
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
+    <a href="#">Savero</a>
+    <a href="#">Fauzi</a>
+    <a href="#">Gerin</a>
   </div>
 
   <!-- <h2>Modal Login Form</h2> -->
@@ -254,13 +254,13 @@
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close"
           title="Close Modal">&times;</span>
-        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        <!-- <img src="./user.png" alt="Avatar" class="avatar"> -->
       </div>
 
       <div class="container">
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-        <a href="#" onclick="signOut();">Sign out</a>
+        <a href="#" onclick="signOut();"><button>Sign out</button></a>
 
 
       </div>
@@ -268,7 +268,7 @@
       <div class="container" style="background-color:#f1f1f1">
         <button type="button" onclick="document.getElementById('id01').style.display='none'"
           class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+        <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
       </div>
     </form>
   </div>
@@ -300,14 +300,7 @@
           <p> ${data[i].description || 'No Description'} </p>
           🌟 ${data[i].stargazers_count} -->
       </div>`
-      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
-        velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat,
-        purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.
-      </p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
-        velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat,
-        purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.
-      </p> -->
+   
     </div>
 
     <div class="column side" id="side-right">
