@@ -37,7 +37,7 @@ router.post('/', function(req, res, next) {
                 email: user.email
             }
             let token = jwt.sign(userdata,secret)
-            res.json(token)
+            res.status(200).json(token)
         })
         .catch(next)
       })
