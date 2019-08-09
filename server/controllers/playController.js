@@ -5,7 +5,6 @@ const beerParserData = require('../helpers/beerParserData')
 class PlayController{
     static getRecommendBeer(req,res){
         const {text} = req.body
-        // const text = 'snow is good but daenery more than him'
         Sentiment.checkSentiment(text)
         .then(data => {
             data = JSON.parse(data)
@@ -17,10 +16,9 @@ class PlayController{
         .then(({data}) => {
             let beers = [];
             for (let i=0; i<data.length; i++){
-                // console.log(beerParserData(data[i]))
                 beers.push(beerParserData(data[i]))
             }
-            res.JSON(beers)
+            res.json(beers)
         })
         .catch(err => {
             console.log(err)
