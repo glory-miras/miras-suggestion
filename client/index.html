@@ -292,8 +292,11 @@
 
     <div class="column middle">
       <h2>Best Beer</h2>
-
-      
+      <div class="thread" style="border: 1px solid grey; padding: 0 5px;">
+          <h1 class="title"> <a href = "${data[i].html_url}" target="_blank" > ${data[i].name} </a> </h1>
+          <p> ${data[i].description || 'No Description'} </p>
+          🌟 ${data[i].stargazers_count}
+      </div>`
       <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
         velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat,
         purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.
