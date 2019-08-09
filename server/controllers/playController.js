@@ -21,9 +21,12 @@ class PlayController{
             for (let i=0; i<data.length; i++){
                 beers.push(beerParserData(data[i]))
             }
+            console.log({emotion, beers})
             res.json({emotion, beers})
         })
-        .catch(next)
+        .catch(err => {
+            console.log(err)
+        })
     }
 }
 

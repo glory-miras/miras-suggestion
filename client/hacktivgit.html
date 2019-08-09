@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel=“stylesheet” href=“https://use.fontawesome.com/releases/v5.8.2/css/all.css”>
+    <meta name="google-signin-client_id" content="929854558537-8vo783abans99v2483p9ibqdlobglnd7.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Hacktivgit</title>
+    
+    <style>
+            .navbar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 20px;
+                overflow: hidden;
+                background-color: #333;
+            }
+    
+            .navbar li {
+                float: left;
+                color: white;
+                font-size: 30px;
+                margin: 10px;
+            }
+    
+            .navbar li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            .navbar li a:hover:not(.active) {
+                background-color: #111;
+            }
+    
+            .navbar .active {
+                background-color: #4CAF50;
+            }
+    
+            .team-left-column {
+                width: 29%;
+                border: 1px solid grey;
+                padding: 5px;
+            }
+    
+            .team-center-column{
+                width: 29%;
+                border: 1px solid grey;
+                padding: 5px;
+            }
+    
+            .team-right-column{
+                width: 39%;
+                border: 1px solid grey;
+                padding: 5px;
+            }
+    
+            #main {
+                min-height: 100vh;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                background-color: #f6f8fa !important;
+                font-size: 20px;
+            }
+            
+        </style>
+</head>
+<body>
+        <div class="navbar">
+                <ul>
+                    <li> Hacktivgit</li>
+                    <li style="float:right" id="signout"> <a href="#" onclick="signOut();">Sign out</a></li>               </li>
+                    <li style="float:right" id="signin"> <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+            
+
+            
+            <div id="main">
+                <aside class="team-left-column">
+                    <h2> Let us recommendation you some beers</h2>
+                    <form id="recommendation">
+                        <input type="text" style="width: 80%"><br>
+                        <input type="submit" value="submit">
+                    </form>
+                </aside>
+                <aside class="team-center-column">  
+                    <div id="list-repos">
+                    </div>
+                </aside>
+                <aside class="team-right-column">
+                    <h1> GIT Tutor </h1>
+                </aside>
+            </div>
+        
+            <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+            <script>
+                
+                $('#recommendation').submit(function(){
+                    event.preventDefault()
+                    let text = $('#text').val()
+                    console.log(text)
+                    $.ajax({
+                        url: `http://localhost:3000/beers/recommended`,
+                        method : 'POST',
+                        data : {
+                            text
+                        }
+                    })
+                    .done(function(data){
+                        console.log(data)
+                    })
+                    .fail(function(err){
+                        console.log(err)
+                    })
+                })
+            </script>
+    </body>
+</html>
+
+
+<!-- <script>
+    let token = null;
+    token = localStorage.getItem('token');
+    if (token){
+        $('#main').css('visibility','visible')
+        $('#signout').show()
+        $('#signin').hide()
+    } else {
+        $('#main').css('visibility','hidden')
+        $('#signout').hide()
+        $('#signin').show()
+    }
+
+         
+    $(".user").click(function (){
+            let token = null;
+            token = localStorage.getItem('token')
+            let user = $(this).text()
+            $.ajax({
+                url: `http://localhost:3000/search`,
+                method : 'POST',
+                data : {
+                    username : user
+                },
+                headers : {
+                    token
+                }
+            })
+            .done(function(data){
+                $('#list-repos').empty()
+                for (let i=0; i<data.length; i++){
+                    
+                    let template = `<div class="thread" style="border: 1px solid grey; padding: 0 5px;">
+                                        <h1 class="title"> <a href = "${data[i].html_url}" target="_blank" > ${data[i].name} </a> </h1>
+                                        <p> ${data[i].description || 'No Description'} </p>
+                                        🌟 ${data[i].stargazers_count}
+                                    </div>`
+                    $('#list-repos').append(template)
+                }
+            })
+            .fail(function(err){
+                console.log(err)
+            })
+        })
+        $(document).ready(function (){
+            let token = null;
+            token = localStorage.getItem('token')
+            $.ajax({
+                url : `http://localhost:3000/stared-repos`,
+                method: `GET`,
+                headers : {
+                    token
+                }
+            })
+            .done(function(data) {
+                $('#list-repos').empty()
+                for (let i=0; i<data.length; i++){
+                    
+                    let template = `<div class="thread" style="border: 1px solid grey; padding: 0 5px;">
+                                        <h1 class="title"> <a href = "${data[i].html_url}" target="_blank" > ${data[i].name} </a> </h1>
+                                        <p> ${data[i].description || 'No Description'} </p>
+                                        🌟 ${data[i].stargazers_count}
+                                    </div>`
+                    $('#list-repos').append(template)
+                }
+            })
+        })
+
+        $('#name-repo').on('keyup',function(){
+            let value = $(this).val().toLowerCase();
+            $('#list-repos .thread').filter(function(){
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            })
+        })
+
+        function onSignIn(googleUser) {
+            var id_token = googleUser.getAuthResponse().id_token
+            $.ajax({
+                url: `http://localhost:3000/user/loginOauth`,
+                method: `POST`,
+                data : {
+                    token : id_token
+                }
+            })
+            .then(token => {
+                localStorage.setItem('token',token)
+                $('#main').css('visibility','visible')
+                $('#signin').hide()
+                $('#signout').show()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+
+        function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
+        localStorage.removeItem('token')
+        $('#main').css('visibility','hidden')
+        $('#signin').show()
+        $('#signout').hide()
+        }
+
+
+    </script> -->
