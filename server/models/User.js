@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const { generatePass } = require('../helper/encryptPass')  
+const { generatePass } = require('../helpers/encryptPass')
 
 const UserSchema = new Schema({
     username : String,
