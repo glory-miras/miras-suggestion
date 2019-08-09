@@ -3,7 +3,7 @@ const AdviceSlip = require('../models/adviceSlip')
 const beerParser = require('../helpers/beerParserData')
 
 class BeerController {
-    static getAll(req,res){
+    static getAll(req,res,next){
         if (req.query.id){
             let beers = [];
             const { id } = req.query
@@ -15,9 +15,7 @@ class BeerController {
             .then(({data}) => {
                 res.json({data, beers})
             })
-            .catch(err => {
-                res.send(err)
-            })
+            .catch(next)
         } else {
             return Beer.getAll()
             .then(({data}) => {
@@ -25,24 +23,20 @@ class BeerController {
                 data.forEach(el => { beers.push(beerParser(el))})
                 res.json(beers)
             })
-            .catch(err => {
-                res.send(err)
-            })
+            .catch(next)
         }
        
        
     }
 
-    static getRandomBeer(req,res){
+    static getRandomBeer(req,res,next){
         Beer.getRandomBeer()
         .then(({data}) => {
             let beers = [];
             data.forEach(el => { beers.push(beerParser(el))})
             res.json(beers)
         })
-        .catch(err => {
-            res.send(err)
-        })
+        .catch(next)
     }
 
 

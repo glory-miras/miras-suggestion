@@ -23,9 +23,7 @@ class PlayController{
             }
             res.json({emotion, beers})
         })
-        .catch(err => {
-            console.log(err)
-        })
+        .catch(next)
     }
 }
 
