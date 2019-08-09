@@ -2,8 +2,12 @@ const {verifyToken} = require('../helpers/generateToken')
 
 function authentication(req,res,next){
 
+    
     try {
-        const decode = verifyToken(req.headers.token)
+        const {accessToken} = req.body
+        console.log(accessToken)
+        const decode = verifyToken(accessToken)
+        
         req.decode = decode
         // console.log('masuk ke decode')
         next()

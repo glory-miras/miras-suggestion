@@ -8,7 +8,8 @@ function generateToken(payload){
 
 
 function verifyToken(token){
-    
+
+    const secret = 'TheChainBreaker'
     return jwt.verify(token,secret)
 
 }

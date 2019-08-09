@@ -5,7 +5,7 @@ const Authentication = require('../middleware/authentication')
 
 
 router.get('/', beerController.getAll)
-router.post('/recommended' , playController.getRecommendBeer)
+router.post('/recommended' ,Authentication, playController.getRecommendBeer)
 router.get('/random', beerController.getRandomBeer)
 
 module.exports = router
