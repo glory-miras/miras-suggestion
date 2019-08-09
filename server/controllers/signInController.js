@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 class SignInController {
 
     static signIn(req, res, next) {
-        console.log(secret)
+        // console.log(secret)
         client
             .verifyIdToken({
                 idToken: req.body.idToken,
