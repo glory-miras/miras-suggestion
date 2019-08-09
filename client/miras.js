@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#userform').submit(function(){
         event.preventDefault()
         let text = $('#userword').val()
-        console.log(text)
+    
         $.ajax({
             url: 'http://localhost:3000/beers/recommended',
             method : 'POST',
@@ -16,6 +16,16 @@ $(document).ready(function () {
         .fail(function(err){
             console.log(err)
         })
+    })
+
+
+    $('.idbeers').on('click',function(){
+        let id = $(this).text()
+        event.preventDefault()
+        $.ajax({
+            
+        })
+
     })
 
 
