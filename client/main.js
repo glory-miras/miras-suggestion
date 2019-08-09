@@ -1,14 +1,14 @@
 function onSignIn(googleUser) {
     
     let idToken = googleUser.getAuthResponse().id_token
-
+    
     axios
     .post(`http://localhost:3000/signin`, { idToken })
     .then(function({ data }) {
-      
-
+      // $('.modal').modal('hide')
+    
+    
       localStorage.setItem('accessToken', data);
-      
       
     })
     .catch(function(err) {
