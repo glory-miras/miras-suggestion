@@ -11,7 +11,9 @@ const beerRoute = require('./routes/beerRoute')
 
 
 mongoose.connect('mongodb://localhost/mirasApp', {useNewUrlParser : true})
-
+.then(()=>{})
+.catch(err=>{
+console.log(err))
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
